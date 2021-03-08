@@ -7,6 +7,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import br.maua.agendadealunos.R;
+import br.maua.agendadealunos.model.Aluno;
 
 public class FormularioAlunoActivity extends AppCompatActivity {
 
@@ -27,6 +28,8 @@ public class FormularioAlunoActivity extends AppCompatActivity {
                 String nome = campoNome.getText().toString();
                 String telefone = campoTelefone.getText().toString();
                 String email = campoEmail.getText().toString();
+
+                Aluno alunoCriado = new Aluno(nome, telefone, email);
             }
         });
     }
