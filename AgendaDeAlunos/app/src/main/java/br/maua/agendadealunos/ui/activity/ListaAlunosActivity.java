@@ -66,6 +66,7 @@ public class ListaAlunosActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Aluno alunoEscolhido = alunos.get(position);
                 Intent irParaFormularioActivity = new Intent(ListaAlunosActivity.this, FormularioAlunoActivity.class);
+                // Transferência de Dados entre Activities
                 irParaFormularioActivity.putExtra("aluno", alunoEscolhido);
                 startActivity(irParaFormularioActivity);
             }

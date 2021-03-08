@@ -20,6 +20,7 @@ public class FormularioAlunoActivity extends AppCompatActivity {
     private EditText campoTelefone;
     private EditText campoEmail;
     private final AlunoDAO alunoDAO = new AlunoDAO();
+    private Aluno aluno;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +32,7 @@ public class FormularioAlunoActivity extends AppCompatActivity {
         configuraBotaoSalvar();
 
         Intent dados = getIntent();
-        Aluno aluno = (Aluno) dados.getSerializableExtra("aluno");
+        aluno = (Aluno) dados.getSerializableExtra("aluno");
         campoNome.setText(aluno.getNome());
         campoTelefone.setText(aluno.getTelefone());
         campoEmail.setText(aluno.getEmail());
@@ -42,9 +43,9 @@ public class FormularioAlunoActivity extends AppCompatActivity {
         botaoSalvar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Aluno alunoCriado = criarAluno();
-
-                salvarAluno(alunoCriado);
+                preencherAluno();
+                alunoDAO.editar(aluno);
+                finish();
             }
         });
     }
@@ -54,15 +55,14 @@ public class FormularioAlunoActivity extends AppCompatActivity {
         finish();
     }
 
-    private Aluno criarAluno() {
+    private void preencherAluno() {
         String nome = campoNome.getText().toString();
         String telefone = campoTelefone.getText().toString();
         String email = campoEmail.getText().toString();
 
-        Aluno alunoCriado = new Aluno(nome, telefone, email);
-        Toast.makeText(FormularioAlunoActivity.this, alunoCriado.getNome() + " criado com sucesso",
-                Toast.LENGTH_SHORT).show();
-        return alunoCriado;
+        aluno.setNome(nome);
+        aluno.setTelefone(telefone);
+        aluno.setEmail(email);
     }
 
     private void inicializacaoDosCampos() {
