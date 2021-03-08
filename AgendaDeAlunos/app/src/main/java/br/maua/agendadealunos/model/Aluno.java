@@ -16,9 +16,7 @@ public class Aluno implements Serializable {
         this.email = email;
     }
 
-    public Aluno() {
-
-    }
+    public Aluno() { }
 
     public void setNome(String nome) {
         this.nome = nome;

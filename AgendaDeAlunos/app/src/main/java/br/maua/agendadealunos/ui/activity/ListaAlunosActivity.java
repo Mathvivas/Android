@@ -15,6 +15,8 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.List;
 
+import static br.maua.agendadealunos.ui.activity.ConstantesActivities.CHAVE_ALUNO;
+
 public class ListaAlunosActivity extends AppCompatActivity {
 
     public static final String TITULO_APPBAR = "Lista de Alunos";
@@ -75,7 +77,7 @@ public class ListaAlunosActivity extends AppCompatActivity {
     private void abrirFormularioModoEditarAluno(final Aluno aluno) {
         Intent irParaFormularioActivity = new Intent(ListaAlunosActivity.this, FormularioAlunoActivity.class);
         // Transferência de Dados entre Activities
-        irParaFormularioActivity.putExtra("aluno", aluno);
+        irParaFormularioActivity.putExtra(CHAVE_ALUNO, aluno);
         startActivity(irParaFormularioActivity);
     }
 
