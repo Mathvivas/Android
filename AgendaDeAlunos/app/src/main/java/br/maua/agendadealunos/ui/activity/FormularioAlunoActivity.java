@@ -1,5 +1,6 @@
 package br.maua.agendadealunos.ui.activity;
 
+import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -9,6 +10,8 @@ import android.os.Bundle;
 import br.maua.agendadealunos.R;
 import br.maua.agendadealunos.dao.AlunoDAO;
 import br.maua.agendadealunos.model.Aluno;
+
+import java.io.Serializable;
 
 public class FormularioAlunoActivity extends AppCompatActivity {
 
@@ -25,8 +28,13 @@ public class FormularioAlunoActivity extends AppCompatActivity {
         setTitle(TITULO_APPBAR);
         // Ctrl B para verficar o método ou constante
         inicializacaoDosCampos();
-
         configuraBotaoSalvar();
+
+        Intent dados = getIntent();
+        Aluno aluno = (Aluno) dados.getSerializableExtra("aluno");
+        campoNome.setText(aluno.getNome());
+        campoTelefone.setText(aluno.getTelefone());
+        campoEmail.setText(aluno.getEmail());
     }
 
     private void configuraBotaoSalvar() {
