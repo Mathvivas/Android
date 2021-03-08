@@ -32,10 +32,14 @@ public class FormularioAlunoActivity extends AppCompatActivity {
         configuraBotaoSalvar();
 
         Intent dados = getIntent();
-        aluno = (Aluno) dados.getSerializableExtra("aluno");
-        campoNome.setText(aluno.getNome());
-        campoTelefone.setText(aluno.getTelefone());
-        campoEmail.setText(aluno.getEmail());
+        if ( dados.hasExtra("aluno") ) {
+            aluno = (Aluno) dados.getSerializableExtra("aluno");
+            campoNome.setText(aluno.getNome());
+            campoTelefone.setText(aluno.getTelefone());
+            campoEmail.setText(aluno.getEmail());
+        } else {
+            aluno = new Aluno();
+        }
     }
 
     private void configuraBotaoSalvar() {
@@ -44,16 +48,16 @@ public class FormularioAlunoActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 preencherAluno();
-                alunoDAO.editar(aluno);
+                if ( aluno.validarId() ) {      // Se o id já existir
+                    alunoDAO.editar(aluno);
+                } else {
+                    alunoDAO.salvar(aluno);
+                }
                 finish();
             }
         });
     }
 
-    private void salvarAluno(final Aluno alunoCriado) {
-        alunoDAO.salvar(alunoCriado);
-        finish();
-    }
 
     private void preencherAluno() {
         String nome = campoNome.getText().toString();
