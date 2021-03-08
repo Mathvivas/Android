@@ -11,8 +11,6 @@ import br.maua.agendadealunos.R;
 import br.maua.agendadealunos.dao.AlunoDAO;
 import br.maua.agendadealunos.model.Aluno;
 
-import java.io.Serializable;
-
 public class FormularioAlunoActivity extends AppCompatActivity {
 
     public static final String TITULO_APPBAR = "Cadastro de Aluno";
@@ -28,6 +26,7 @@ public class FormularioAlunoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_formulario_aluno);
         setTitle(TITULO_APPBAR);
         // Ctrl B para verficar o método ou constante
+        // Crtl Alt M para extrair
         inicializacaoDosCampos();
         configuraBotaoSalvar();
 
