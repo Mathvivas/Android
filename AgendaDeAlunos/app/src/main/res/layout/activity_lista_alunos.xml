@@ -12,10 +12,10 @@
             android:layout_alignParentBottom="true"
             android:layout_margin="16dp"
             android:src="@drawable/ic_action_novo_aluno"
-            android:clickable="true" app:srcCompat="@mipmap/ic_launcher" android:id="@+id/floatingActionButton"
+            android:clickable="true" app:srcCompat="@mipmap/ic_launcher" android:id="@+id/activity_lista_alunos_fab_novo_aluno"
             android:focusable="true"/>
     <ListView
             android:layout_width="match_parent"
-            android:layout_height="match_parent" android:id="@+id/activity_main_lista_de_alunos">
+            android:layout_height="match_parent" android:id="@+id/activity_lista_alunos_listview">
     </ListView>
 </RelativeLayout>
