@@ -13,8 +13,6 @@ import br.maua.agendadealunos.dao.AlunoDAO;
 import br.maua.agendadealunos.model.Aluno;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import java.util.List;
-
 import static br.maua.agendadealunos.ui.activity.ConstantesActivities.CHAVE_ALUNO;
 
 public class ListaAlunosActivity extends AppCompatActivity {
@@ -58,7 +56,6 @@ public class ListaAlunosActivity extends AppCompatActivity {
 
     private void configuraLista() {
         ListView listaDeAlunos = findViewById(R.id.activity_lista_alunos_listview);
-        final List<Aluno> alunos = alunoDAO.getAll();
         // this representa essa MainActivity
         configurarAdapter(listaDeAlunos);
         configurarListenerDeCliquePorItem(listaDeAlunos);

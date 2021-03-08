@@ -35,7 +35,7 @@ public class FormularioAlunoActivity extends AppCompatActivity {
     }
 
     private void carregarAluno() {
-        Intent dados = getIntent();
+        Intent dados = getIntent();     // Operação a ser realizada
         if ( dados.hasExtra(CHAVE_ALUNO) ) {
             setTitle(TITULO_APPBAR_EDITA_ALUNO);
             aluno = (Aluno) dados.getSerializableExtra(CHAVE_ALUNO);
