@@ -30,6 +30,10 @@ public class FormularioAlunoActivity extends AppCompatActivity {
                 String email = campoEmail.getText().toString();
 
                 Aluno alunoCriado = new Aluno(nome, telefone, email);
+                Toast.makeText(FormularioAlunoActivity.this, alunoCriado.getNome() + " criado com sucesso",
+                        Toast.LENGTH_SHORT).show();
+
+
             }
         });
     }
