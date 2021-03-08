@@ -13,5 +13,7 @@ public class AlunoDAO {
         alunos.add(aluno);
     }
 
-
+    public List<Aluno> getAll() {
+        return new ArrayList<>(alunos);
+    }
 }

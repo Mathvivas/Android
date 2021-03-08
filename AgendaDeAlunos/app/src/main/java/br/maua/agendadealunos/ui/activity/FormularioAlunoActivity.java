@@ -1,5 +1,6 @@
 package br.maua.agendadealunos.ui.activity;
 
+import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -33,7 +34,7 @@ public class FormularioAlunoActivity extends AppCompatActivity {
                 Toast.makeText(FormularioAlunoActivity.this, alunoCriado.getNome() + " criado com sucesso",
                         Toast.LENGTH_SHORT).show();
 
-
+                startActivity(new Intent(FormularioAlunoActivity.this, ListaAlunosActivity.class));
             }
         });
     }
