@@ -3,9 +3,14 @@
                 xmlns:app="http://schemas.android.com/apk/res-auto" android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
+                <!-- match_parent: Preenche completamente o espaço -->
+                <!-- wrap_content: Cresce de acordo com o seu conteúdo, somente o tamanho necessário -->
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:layout_width="70dp"
-            android:layout_height="76dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="16dp"
             android:clickable="true" app:srcCompat="@mipmap/ic_launcher" android:id="@+id/floatingActionButton"
             android:focusable="true"/>
     <ListView
