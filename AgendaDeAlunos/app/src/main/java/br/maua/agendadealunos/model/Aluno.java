@@ -1,5 +1,7 @@
 package br.maua.agendadealunos.model;
 
+import androidx.annotation.NonNull;
+
 public class Aluno {
     private final String nome;
     private final String telefone;
@@ -15,6 +17,7 @@ public class Aluno {
         return nome;
     }
 
+    @NonNull
     @Override
     public String toString() {
         return nome;
