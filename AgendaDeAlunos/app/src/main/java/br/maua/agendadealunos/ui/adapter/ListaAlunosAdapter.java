@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.TextView;
 import br.maua.agendadealunos.R;
 import br.maua.agendadealunos.model.Aluno;
 
@@ -38,6 +39,11 @@ public class ListaAlunosAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {     // Cria a view para cada elemento
         View viewCriada = LayoutInflater.from(context).inflate(R.layout.item_aluno, parent, false);
+        Aluno alunoDevolvido = alunos.get(position);
+        TextView nome = viewCriada.findViewById(R.id.item_aluno_nome);
+        nome.setText(alunoDevolvido.getNome());
+        TextView telefone = viewCriada.findViewById(R.id.item_aluno_nome);
+        telefone.setText(alunoDevolvido.getTelefone());
         return viewCriada;
     }
 
