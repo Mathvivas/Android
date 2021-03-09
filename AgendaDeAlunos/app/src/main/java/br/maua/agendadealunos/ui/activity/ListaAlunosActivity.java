@@ -25,10 +25,9 @@ public class ListaAlunosActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_alunos);
-
         setTitle(TITULO_APPBAR);
-
         configuraFabNovoAluno();
+        configuraLista();
     }
 
     private void configuraFabNovoAluno() {
@@ -49,8 +48,12 @@ public class ListaAlunosActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        atualizarAlunos();
+    }
 
-        configuraLista();
+    private void atualizarAlunos() {
+        adapter.clear();
+        adapter.addAll(alunoDAO.getAll());
     }
 
     private void configuraLista() {
@@ -58,15 +61,23 @@ public class ListaAlunosActivity extends AppCompatActivity {
         // this representa essa MainActivity
         configurarAdapter(listaDeAlunos);
         configurarListenerDeCliquePorItem(listaDeAlunos);
+        configuraListenerDeCliqueLongoPorItem(listaDeAlunos);
+    }
+
+    private void configuraListenerDeCliqueLongoPorItem(ListView listaDeAlunos) {
         listaDeAlunos.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
                 Aluno alunoEscolhido = (Aluno) parent.getItemAtPosition(position);
-                alunoDAO.remover(alunoEscolhido);
-                adapter.remove(alunoEscolhido);
+                remover(alunoEscolhido);
                 return true;
             }
         });
+    }
+
+    private void remover(final Aluno aluno) {
+        alunoDAO.remover(aluno);
+        adapter.remove(aluno);
     }
 
     private void configurarListenerDeCliquePorItem(ListView listaDeAlunos) {
@@ -87,8 +98,7 @@ public class ListaAlunosActivity extends AppCompatActivity {
     }
 
     private void configurarAdapter(ListView listaDeAlunos) {
-        adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,
-                alunoDAO.getAll());
+        adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1);
         listaDeAlunos.setAdapter(adapter);
     }
 }
