@@ -2,11 +2,9 @@ package br.maua.agendadealunos.ui.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.ContextMenu;
-import android.view.MenuItem;
-import android.view.View;
+import android.view.*;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
+import android.widget.BaseAdapter;
 import android.widget.ListView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -14,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import br.maua.agendadealunos.R;
 import br.maua.agendadealunos.dao.AlunoDAO;
 import br.maua.agendadealunos.model.Aluno;
+import br.maua.agendadealunos.ui.adapter.ListaAlunosAdapter;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import static br.maua.agendadealunos.ui.activity.ConstantesActivities.CHAVE_ALUNO;
@@ -22,7 +21,7 @@ public class ListaAlunosActivity extends AppCompatActivity {
 
     public static final String TITULO_APPBAR = "Lista de Alunos";
     private final AlunoDAO alunoDAO = new AlunoDAO();
-    private ArrayAdapter<Aluno> adapter;
+    private ListaAlunosAdapter adapter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -108,7 +107,7 @@ public class ListaAlunosActivity extends AppCompatActivity {
     }
 
     private void configurarAdapter(ListView listaDeAlunos) {
-        adapter = new ArrayAdapter<>(this, R.layout.item_aluno);
+        adapter = new ListaAlunosAdapter(this);
         listaDeAlunos.setAdapter(adapter);
     }
 }
