@@ -45,7 +45,7 @@ public class Aluno implements Serializable {
     @NonNull
     @Override
     public String toString() {
-        return nome + "\n" + telefone;
+        return nome + "-" + telefone;
     }
 
     public void setId(int id) {
